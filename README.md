@@ -62,69 +62,14 @@ The **Personal Finance Tracker** is a mobile application developed as part of a 
 ### **Steps to Run the Project**  
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/yourusername/personal-finance-tracker.git
+   git clone https://github.com/Asohfaustina/personal-finance-tracker.git
    cd personal-finance-tracker
    ```
 2. **Install Dependencies**  
    ```bash
    npm install
    ```
-3. **Set Up Database**  
-   - Create a PostgreSQL database.  
-   - Run the provided database schema script to initialize tables.  
 
-4. **Configure Environment Variables**  
-   - Create a `.env` file in the root directory and include:  
-     ```env
-     DATABASE_URL=your_database_url
-     API_KEY=your_api_key
-     ```
-5. **Start the Application**  
-   ```bash
-   npm start
-   ```
-
----
-
-## **Application Structure**  
-### **Frontend**  
-- **Components**: Reusable UI elements (buttons, forms, charts).  
-- **Pages**: Screens for Home, Dashboard, Authentication, and Reports.  
-- **State Management**: Redux/Context API for managing global state.  
-
-### **Backend**  
-- **Database Schema**: Includes tables for Users, Expenses, and Savings.  
-- **API Endpoints**: Secure RESTful APIs for CRUD operations.  
-
----
-
-## **Roadmap**  
-1. Add push notifications for spending alerts.  
-2. Introduce multi-currency support.  
-3. Implement offline functionality for seamless usage without internet.  
-4. Add integrations with external financial tools and APIs.  
-
----
-
-## **Screenshots**  
-### **Home Page**  
-_(Include a screenshot of the home page showing expense and savings tracking)._  
-
-### **Reports Page**  
-_(Include a screenshot of the interactive charts and reports.)_  
-
----
-
-## **Contributing**  
-Contributions are welcome! If you'd like to contribute:  
-1. Fork the repository.  
-2. Create a feature branch:  
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and open a pull request.  
-
----
 
 ## **License**  
 This project is licensed under the MIT License. See the LICENSE file for details.  
@@ -137,5 +82,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 - **Open-Source Libraries**: A special thanks to the contributors of the tools and libraries used.  
 
 ---
-
-Let me know if you’d like to include more sections or refine any part!
