@@ -23,19 +23,19 @@ export function Title(props: TitleProps) {
 }
 
 const styles = StyleSheet.create({
-  visual: {
-    borderBottomWidth: 0.3,
-    borderColor: "rgba(0,0,0,0.3)",
-    padding: layout.padding.m,
-    alignItems: "center"
-  },
-  alertTitle: {
-    fontSize: layout.font.m - 6,
-    marginTop: layout.margin.s
-  },
-  alertBody: {
-    fontSize: layout.font.s,
-    textAlign: "center",
-    marginTop: layout.margin.s
-  }
+	visual: {
+		borderBottomWidth: 0.3,
+		borderColor: "rgba(0,0,0,0.3)",
+		padding: layout.padding.md,
+		alignItems: "center",
+	},
+	alertTitle: {
+		fontSize: layout.font.md - 6,
+		marginTop: layout.margin.sm,
+	},
+	alertBody: {
+		fontSize: layout.font.sm,
+		textAlign: "center",
+		marginTop: layout.margin.sm,
+	},
 });

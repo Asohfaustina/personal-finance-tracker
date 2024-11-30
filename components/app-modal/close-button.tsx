@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   option: {
-    fontSize: layout.font.s
+    fontSize: layout.font.sm
   }
 });

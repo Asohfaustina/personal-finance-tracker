@@ -33,17 +33,17 @@ export function ActionButton(props: ActionButtonProps) {
 }
 
 const styles = StyleSheet.create({
-  optionBox: {
-    padding: 15,
-    width: "50%",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  option: {
-    fontSize: layout.font.s
-  },
-  additional: {
-    borderStartWidth: 0.3,
-    borderColor: "rgba(0,0,0,0.3)"
-  }
+	optionBox: {
+		padding: 15,
+		width: "50%",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	option: {
+		fontSize: layout.font.sm,
+	},
+	additional: {
+		borderStartWidth: 0.3,
+		borderColor: "rgba(0,0,0,0.3)",
+	},
 });

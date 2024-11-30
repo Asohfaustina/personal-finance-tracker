@@ -17,7 +17,7 @@ const initial = {
 export default function useForm() {
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [formData, setFormData] = React.useState(initial);
-	const { ui } = useActions();
+	const { ui, root, account } = useActions();
 
 	const updateForm = (name: keyof typeof formData, value: string) => {
 		setFormData({
@@ -32,6 +32,15 @@ export default function useForm() {
 			const formValues = validate.parse(formData);
 
 			const response = await loginAccount(formValues);
+			account.changeAccountState({
+				user: response.user,
+				refreshToken: response.refresh,
+				authToken: response.key,
+				expiresAt: response.exp,
+			});
+
+			root.changeIsLoggedIn(true);
+
 			ui.toggleToast({
 				msgs: "sign in Successful!",
 				show: true,

@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type RootState = {
-  isLoggedIn: boolean;
-  isOnboarded: boolean;
+	isLoggedIn: boolean;
+	isOnboarded: boolean;
+	hasSetup: boolean;
 };
 
 const initialState: RootState = {
-  isOnboarded: false,
-  isLoggedIn: false,
+	isOnboarded: false,
+	isLoggedIn: false,
+	hasSetup: false,
 };
 
 const rootSlice = createSlice({
@@ -26,9 +28,16 @@ const rootSlice = createSlice({
         ...state,
         isOnboarded: action.payload,
       };
+    
     },
+    changeHasSetup: (state, action:PayloadAction<boolean>) => {
+      return {
+        ...state,
+        hasSetup: action.payload
+      }
+    }
   },
 });
 
-export const { changeIsLoggedIn, changeIsOnboarded } = rootSlice.actions;
+export const { changeIsLoggedIn, changeIsOnboarded, changeHasSetup } = rootSlice.actions;
 export default rootSlice.reducer;

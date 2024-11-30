@@ -10,13 +10,15 @@ export default function TabLayout() {
 	return (
 		<Tabs
 			screenOptions={{
-				tabBarActiveTintColor: "#FFCC89",
+				tabBarActiveTintColor: "#5B9EFF",
 				tabBarInactiveTintColor: "rgba(255, 255,255, 0.7)",
 				headerShown: false,
 				tabBarStyle: {
-					backgroundColor: "#10231C",
-					paddingHorizontal: 50,
-					paddingTop: 10,
+					height: 70,
+					borderTopRightRadius: 10,
+					borderTopLeftRadius: 10,
+					backgroundColor: "#081F3D",
+					paddingTop: 5,
 				},
 			}}
 		>
@@ -28,10 +30,17 @@ export default function TabLayout() {
 				}}
 			/>
 			<Tabs.Screen
-				name="trips"
+				name="expenses"
 				options={{
-					title: "Trips",
-					tabBarIcon: ({ color }) => <FontAwesome5 name="route" size={24} color={color} />,
+					title: "Expenses",
+					tabBarIcon: ({ color }) => <FontAwesome5 name="chart-pie" size={24} color={color} />,
+				}}
+			/>
+			<Tabs.Screen
+				name="savings"
+				options={{
+					title: "Savings",
+					tabBarIcon: ({ color }) => <FontAwesome5 name="coins" size={24} color={color} />,
 				}}
 			/>
 			<Tabs.Screen

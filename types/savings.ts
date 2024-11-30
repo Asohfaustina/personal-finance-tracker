@@ -12,3 +12,14 @@ export type Savings = {
 	createdAt: string;
 	updatedAt: string;
 };
+
+export type SavingsHistory = {
+	_id: string;
+	savings_id: string;
+	amount: string;
+	currency: string;
+	amountBeforePayment: number;
+	amountAfterPayment: number;
+	createdAt: string;
+	updatedAt: string;
+};
