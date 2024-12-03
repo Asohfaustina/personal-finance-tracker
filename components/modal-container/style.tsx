@@ -14,13 +14,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    padding: layout.padding.large,
+    padding: layout.padding.md,
   },
   modal: {
     maxWidth: 400,
     width: "100%",
     backgroundColor: "white",
-    borderRadius: layout.radius.medium
+    borderRadius: layout.radius.sm
   },
   optionsContainer: {
     flexDirection: "row"
@@ -32,28 +32,28 @@ export const styles = StyleSheet.create({
     justifyContent: "center"
   },
   option: {
-    fontSize: layout.font.medium + 2
+    fontSize: layout.font.sm + 2
   },
   visual: {
     borderBottomWidth: 0.3,
     borderColor: "rgba(0,0,0,0.3)",
-    padding: layout.padding.medium,
+    padding: layout.padding.sm,
     alignItems: "center"
   },
   alertTitle: {
-    fontSize: layout.font.medium + 4,
-    marginTop: layout.margin.small
+    fontSize: layout.font.sm + 4,
+    marginTop: layout.margin.xs
   },
   alertBody: {
-    fontSize: layout.font.medium + 2,
+    fontSize: layout.font.sm + 2,
     textAlign: "center",
-    marginTop: layout.margin.small
+    marginTop: layout.margin.xs
   },
   loading: {
     alignItems: "center",
     width: 30,
     height: 30,
-    borderRadius: layout.radius.small,
+    borderRadius: layout.radius.xs,
     justifyContent: "center",
     backgroundColor: "white"
   },

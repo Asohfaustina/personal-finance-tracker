@@ -3,7 +3,7 @@ import { assets } from "@/constants";
 import * as React from "react";
 import * as FileSystem from "expo-file-system";
 import axios from "axios";
-import { blobReader } from "@/lib/blob-reader";
+import blobReader from "@/lib/blob-reader";
 
 export default function useAppImage(size: number, source: ImageSourcePropType | string | null | undefined) {
   const [img, setImg] = React.useState<ImageSourcePropType>(assets.placeholder01);

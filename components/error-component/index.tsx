@@ -11,7 +11,7 @@ type ErrorComponentProps = {
 }
 
 export default React.memo(function ErrorComponent({ error, retry = () => null }: ErrorComponentProps) {
-  const [err, setErr] = React.useState(new Error("error occured"));
+  const [err, setErr] = React.useState(new Error("error occurred"));
 
   React.useLayoutEffect(() => {
     const transformed = ensureError(error);

@@ -13,15 +13,17 @@ export function ErrorScreen(props: ErrorScreenProps) {
     if (props.retry) props.retry();
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.box}>
-        <Text>Error Screen</Text>
-        <Text style={styles.text}>Error message: {props.error?.message}</Text>
-        <Spacer height={20} />
-        <AppButton title="Retry?" press={press} />
-      </View>
-    </SafeAreaView>
-  );
+		<SafeAreaView style={styles.container}>
+			<View style={styles.box}>
+				<Text>Error Screen</Text>
+				<Text style={styles.text}>Error message: {props.error?.message}</Text>
+				<Spacer height={20} />
+				<AppButton press={press}>
+					<Text>Retry?</Text>
+				</AppButton>
+			</View>
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({

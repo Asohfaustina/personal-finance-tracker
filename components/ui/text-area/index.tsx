@@ -1,7 +1,7 @@
 import { TextInput, View, Text } from "react-native";
 import { styles } from "./styles";
 import * as React from 'react';
-import { color } from "@/constants";
+import { colors } from "@/constants";
 
 type _PasswordInputProps = {
   title?: string
@@ -30,7 +30,7 @@ export default React.memo(function TextArea({
           style={styles.input}
           textAlignVertical="top"
           placeholder={placeholder ?? "Placeholder"}
-          placeholderTextColor={color.mute}
+          placeholderTextColor={colors.mute}
           onChangeText={onChangeText}
           editable={!isLoading}
           value={value}

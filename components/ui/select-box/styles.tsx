@@ -1,30 +1,30 @@
 import { Platform, StyleSheet } from "react-native";
-import { color, layout } from "@/constants";
+import { colors, layout } from "@/constants";
 
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    marginBottom: layout.margin.medium
+    marginBottom: layout.margin.sm
   },
   label: {
-    marginBottom: layout.margin.small,
-    fontSize: layout.font.medium,
+    marginBottom: layout.margin.xs,
+    fontSize: layout.font.sm,
     color: "black"
   },
   box: {
     ...Platform.select({
       android: {
-        borderRadius: layout.radius.tiny + 1,
+        borderRadius: layout.radius["2xs"] + 1,
         height: 60,
       },
       ios: {
-        borderRadius: layout.radius.small - 2,
+        borderRadius: layout.radius.xs - 2,
         height: 50,
       }
     }),
     width: "100%",
     borderWidth: 0.3,
-    borderColor: color.mute,
+    borderColor: colors.mute,
     paddingHorizontal: 15,
     flexDirection: "row",
     alignItems: "center",
@@ -44,13 +44,13 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
-    paddingHorizontal: layout.padding.medium,
+    paddingHorizontal: layout.padding.sm,
     borderBottomWidth: 0.17,
-    borderColor: color.mute
+    borderColor: colors.mute
   },
   headerText: {
     textAlign: "center",
-    fontSize: layout.font.medium,
+    fontSize: layout.font.sm,
     fontWeight: "bold",
     padding: 18
   },
