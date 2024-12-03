@@ -5,8 +5,8 @@ export const budgets: Budget[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a18",
 		userId: users[0]._id,
-		currentExpense: 50,
-		budget: 500,
+		currentExpense: 2000,
+		budget: 5000,
 		currency: "NGN",
 		duration: "2024-05-12T10:00:00Z",
 		createdAt: "2024-05-12T10:00:00Z",

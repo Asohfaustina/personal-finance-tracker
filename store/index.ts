@@ -5,13 +5,15 @@ import rootSlice, { RootState } from "./root.slice";
 import accountSlice, { AccountState } from "./account.slice";
 import uiSlice from "./ui-slice";
 import savingsSlice, { SavingsState } from "./savings-slice";
+import expenseSlice, { ExpenseState } from "./expense-slice";
 
 const store = configureStore({
 	reducer: {
+		ui: uiSlice,
 		root: persistReducer<RootState>({ key: "root", storage: AsyncStorage }, rootSlice),
 		account: persistReducer<AccountState>({ key: "accounts", storage: AsyncStorage }, accountSlice),
-		ui: uiSlice,
 		savings: persistReducer<SavingsState>({ key: "savings", storage: AsyncStorage }, savingsSlice),
+		expenses: persistReducer<ExpenseState>({key: "expenses", storage: AsyncStorage},expenseSlice )
 	},
 
 	middleware: (getDefaultMiddleware) =>

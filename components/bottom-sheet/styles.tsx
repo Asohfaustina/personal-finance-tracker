@@ -1,5 +1,6 @@
 import { StyleSheet, Platform } from "react-native";
 import { colors, layout } from "@/constants";
+import { globalStyles } from "@/styles/global.styles";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -7,6 +8,7 @@ export const styles = StyleSheet.create({
 		width: "100%",
 		borderColor: colors.white[200],
 		backgroundColor: colors.white[700],
+		zIndex:10
 	},
 	type1: {
 		...Platform.select({
@@ -47,6 +49,7 @@ export const styles = StyleSheet.create({
 		borderRadius: layout.radius.xl,
 	},
 	title: {
+		...globalStyles.headers,
 		paddingBottom: layout.padding.sm,
 		fontSize: layout.font.md + 2,
 		textTransform: "capitalize",

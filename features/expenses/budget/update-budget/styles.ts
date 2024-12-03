@@ -1,9 +1,10 @@
 import { colors, layout } from "@/constants";
+import { globalStyles } from "@/styles/global.styles";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	container: {
-		backgroundColor: "none",
+		...globalStyles.px,
 		gap: 20,
 	},
 	formBox: {
@@ -13,11 +14,10 @@ export const styles = StyleSheet.create({
 		backgroundColor: "transparent",
 		borderWidth: 0.2,
 	},
-
 	inputBox: {
 		gap: 3,
 		backgroundColor: "transparent",
-	},	
+	},
 	label: {
 		color: colors.black[700],
 	},
@@ -25,26 +25,28 @@ export const styles = StyleSheet.create({
 		borderColor: colors.primary[700],
 	},
 
-	recoveryBox: {
-		flexDirection: "row",
-		marginLeft: "auto",
-		justifyContent: "flex-end",
+	durationBox: {
+		padding: layout.padding.sm + 3,
+		borderRadius: layout.radius.xs,
+		borderWidth: 0.3,
 	},
 
-	recoveryText: {
-		textAlign: "right",
-		color: colors.primary[400],
-		fontSize: layout.font.xs + 1,
-		textDecorationLine: "underline",
+	durationText: {
+		fontSize: layout.font.md,
+		fontWeight: "500",
 	},
+
 	actionBox: {
-		backgroundColor: "none",
+		...globalStyles.bgNone,
 		alignItems: "center",
 	},
 
-	signUpText: {
+	dismissBox: {
+		...globalStyles.bgNone,
+		alignItems: "center",
+	},
+	dismissText: {
 		textAlign: "center",
-		fontSize: layout.font.xs + 1,
-		paddingRight: 20,
+		textDecorationLine: "underline",
 	},
 });

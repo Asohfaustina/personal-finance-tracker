@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
 		gap: 4,
 		paddingVertical: layout.padding.sm,
 		paddingHorizontal: layout.padding.sm + 2,
-		backgroundColor: colors.mute,
 		...Platform.select({
 			android: {
 				// paddingTop: layout.padding.l + 10,

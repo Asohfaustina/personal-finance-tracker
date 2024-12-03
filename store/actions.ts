@@ -5,6 +5,9 @@ import { changeHasSetup, changeIsLoggedIn, changeIsOnboarded } from "./root.slic
 import { changeLoading, ToastAction, toggleToast } from "./ui-slice";
 import { addHistory, addSavings, updateSavings } from "./savings-slice";
 import { Savings, SavingsHistory } from "@/types/savings";
+import { addExpense, updateBudget } from "./expense-slice";
+import { Expense } from "@/types/expense";
+import { Budget } from "@/types/budget";
 
 /**
  * this is a utility function to help with dispatching action
@@ -34,10 +37,16 @@ export default function useActions() {
 		addHistory: (payload: SavingsHistory[]) => dispatch(addHistory(payload)),
 		updateSavings: (payload: Partial<Savings>) => dispatch(updateSavings(payload)),
 	};
+
+	const expense = {
+		addExpense: (payload: Expense[]) => dispatch(addExpense(payload)),
+		updateBudget: (payload: Budget | null) => dispatch(updateBudget(payload)),
+	};
 	return {
 		root,
 		ui,
 		account,
 		savings,
+		expense,
 	};
 }

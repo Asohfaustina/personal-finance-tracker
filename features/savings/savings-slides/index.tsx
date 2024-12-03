@@ -1,14 +1,12 @@
 import { View } from "@/components/theme";
-
 import * as React from "react";
 import { Animated, Dimensions, Image, PanResponder, ScrollView } from "react-native";
 import { styles } from "./styles";
-import { data } from "./data";
 import Dots from "./dots";
 import Render from "@/components/render";
 import useSlides from "./use-slides";
 import SavingsCard from "./savings-card";
-import { Spinner } from "@/components/spinner";
+
 
 const width = Dimensions.get("screen").width;
 
@@ -47,7 +45,7 @@ export default React.memo(function SavingsSlides() {
 					style={styles.slidesBox}
 					snapToInterval={width}
 					horizontal
-					ref={scrollRef}
+					// ref={scrollRef}
 					scrollEnabled={false}
 					showsHorizontalScrollIndicator={false}
 					scrollEventThrottle={16}

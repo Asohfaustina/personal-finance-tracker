@@ -13,6 +13,7 @@ type RenderProps = {
   loadingComponent?: React.ReactNode
   errorComponent?: React.ReactElement
   showError?: boolean
+  hideContent?: boolean
 }
 
 /**
@@ -30,6 +31,7 @@ export default React.memo(function Render(props: RenderProps) {
     loadingPosition = "center",
     loadingComponent,
     errorComponent,
+    hideContent = false,
     retry
   } = props;
   if (isLoading) {
@@ -42,6 +44,8 @@ export default React.memo(function Render(props: RenderProps) {
     if (errorComponent) return errorComponent
     return <ErrorScreen error={error as any} />
   }
+
+  if(hideContent) return null
   return (
     <React.Fragment>
       {typeof children === "function" ? children() : children}

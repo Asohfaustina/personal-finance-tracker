@@ -1,7 +1,5 @@
-import { Text, View } from "@/components/theme";
+import Expenses from "@/features/expenses";
 
-export default function Home() {
-    return <View>
-        <Text>Home</Text>
-    </View>
+export default function () {
+	return <Expenses />;
 }

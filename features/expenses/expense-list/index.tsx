@@ -8,13 +8,12 @@ import ExpenseItem from "./expense-item";
 import { styles } from "./styles";
 
 export default function ExpenseList() {
-	const { isFetching, isError, error, isRefetching, data, hasMore, refetch, setPage } =
+	const { isFetching, isError, error, isRefetching, expenses, hasMore, refetch, setPage } =
 		useExpenses();
 
 	const hasData = React.useMemo(() => {
-		if (!data?.totalDocs) return false;
-		return data.totalDocs > 0;
-	}, [data?.totalDocs]);
+		return expenses.length > 0;
+	}, [expenses.length]);
 
 	// TODO: Work on the pagination
 
@@ -24,7 +23,7 @@ export default function ExpenseList() {
 				<FlatList
 					renderItem={({ index, item }) => <ExpenseItem key={index} {...item} />}
 					showsVerticalScrollIndicator={false}
-					data={data?.docs}
+					data={expenses}
 					refreshing={isRefetching}
 					ListEmptyComponent={() => {
 						if (!hasData) {
