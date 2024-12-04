@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
 		position: "absolute",
 		width: "100%",
 		borderColor: colors.white[200],
-		backgroundColor: colors.white[700],
+		backgroundColor: colors.white[200],
 		zIndex:10
 	},
 	type1: {

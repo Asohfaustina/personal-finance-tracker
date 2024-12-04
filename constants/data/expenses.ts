@@ -5,6 +5,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a18",
 		category: "shopping",
+		title: "Food shopping",
 		comments: "made some shopping",
 		createdBy: users[0],
 		amount: 100,
@@ -15,6 +16,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a19",
 		category: "education",
+		title: "bought books",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 5000,
@@ -25,6 +27,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a10",
 		category: "food",
+		title: "Lunch",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 3000,
@@ -35,6 +38,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a11",
 		category: "others",
+		title: "Apple music",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 7000,
@@ -45,6 +49,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a12",
 		category: "rent",
+		title: "Paid Rent",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 200,
@@ -55,6 +60,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a13",
 		category: "food",
+		title: "Dinner",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 1000,
@@ -65,6 +71,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a14",
 		category: "utilities",
+		title: "light bill",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 200,
@@ -75,6 +82,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a15",
 		category: "education",
+		title: "Book",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 1100,
@@ -85,6 +93,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a16",
 		category: "rent",
+		title: "paid rent",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 5000,
@@ -95,6 +104,7 @@ export const expenses: Expense[] = [
 	{
 		_id: "664ddd5a85ca21865ff74a17",
 		category: "food",
+		title: "Breakfast",
 		comments: "got some food",
 		createdBy: users[0],
 		amount: 2000,

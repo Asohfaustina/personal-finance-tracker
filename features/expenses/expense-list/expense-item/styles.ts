@@ -22,6 +22,8 @@ export const styles = StyleSheet.create({
 	title: {
 		color: colors.primary[900],
 		fontWeight: "500",
+		fontSize: layout.font.md,
+		textTransform: "capitalize",
 	},
 	iconBox: {
 		borderWidth: 0.5,
@@ -31,9 +33,14 @@ export const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 	},
-	subTitle: {
-		fontSize: layout.font.sm,
-		color: colors.primary[900],
+	amount: {
+		fontSize: layout.font.md,
+		color: colors.primary[700],
+		fontWeight: "600",
+	},
+	currency: {
+		fontSize: layout.font.xs,
+		color: colors.black[600],
 	},
 
 	categoryBox: {

@@ -1,4 +1,4 @@
-import updateObject from "@/lib/update-object";
+
 import { Budget } from "@/types/budget";
 import { Expense } from "@/types/expense";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -23,7 +23,6 @@ const expenseSlice = createSlice({
 			const updates = action.payload.filter((item) => !originals.includes(item._id));
 			return {
 				...state,
-
 				expenses: [...updates, ...state.expenses],
 			};
 		},

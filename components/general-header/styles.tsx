@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
 	title: {
 		fontSize: layout.font.md + 4,
 		letterSpacing: -0.3,
+		color: colors.primary[700],
 	},
 	hide: {
 		width: 40,

@@ -3,7 +3,7 @@ type ScreenInfoType = {
 	text: string;
 };
 
-type Screens = "expenses" | "savings" | "profile";
+type Screens = "expenses" | "savings" | "savingsDetails" | "profile";
 
 type InfoType = {
 	[id in Screens]: ScreenInfoType;
@@ -17,6 +17,10 @@ export const screenInfo: InfoType = {
 	},
 
 	savings: {
+		title: "Savings",
+		text: "Access all your savings with their individual details. you have limit slots for savings.",
+	},
+	savingsDetails: {
 		title: "",
 		text: "",
 	},

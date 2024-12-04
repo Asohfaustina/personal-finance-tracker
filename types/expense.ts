@@ -4,6 +4,7 @@ export type ExpenseType = "rent" | "food" | "shopping" | "utilities" | "educatio
 
 export type Expense = {
 	_id: string;
+	title: string;
 	category: ExpenseType;
 	comments: string | undefined;
 	createdBy: User;

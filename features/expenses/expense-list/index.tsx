@@ -6,6 +6,7 @@ import useExpenses from "./expense-item/use-expenses";
 import * as React from "react";
 import ExpenseItem from "./expense-item";
 import { styles } from "./styles";
+import Details from "./details";
 
 export default function ExpenseList() {
 	const { isFetching, isError, error, isRefetching, expenses, hasMore, refetch, setPage } =
@@ -18,31 +19,34 @@ export default function ExpenseList() {
 	// TODO: Work on the pagination
 
 	return (
-		<View style={styles.container}>
-			<Render isLoading={isFetching} isError={isError} error={error} loadingPosition="top">
-				<FlatList
-					renderItem={({ index, item }) => <ExpenseItem key={index} {...item} />}
-					showsVerticalScrollIndicator={false}
-					data={expenses}
-					refreshing={isRefetching}
-					ListEmptyComponent={() => {
-						if (!hasData) {
-							return (
-								<EmptyComponent
-									title="No Expense Record yet"
-									body="You don't have any Expense Record yet, create new Expense and they'll appear here"
-								/>
-							);
-						}
-					}}
-					onEndReached={() => {
-						if (hasMore) setPage((prev) => prev + 1);
-					}}
-					onRefresh={() => {
-						refetch();
-					}}
-				/>
-			</Render>
-		</View>
+		<React.Fragment>
+			<View style={styles.container}>
+				<Render isLoading={isFetching} isError={isError} error={error} loadingPosition="top">
+					<FlatList
+						renderItem={({ index, item }) => <ExpenseItem key={index} {...item} />}
+						showsVerticalScrollIndicator={false}
+						data={expenses}
+						refreshing={isRefetching}
+						ListEmptyComponent={() => {
+							if (!hasData) {
+								return (
+									<EmptyComponent
+										title="No Expense Record yet"
+										body="You don't have any Expense Record yet, create new Expense and they'll appear here"
+									/>
+								);
+							}
+						}}
+						onEndReached={() => {
+							if (hasMore) setPage((prev) => prev + 1);
+						}}
+						onRefresh={() => {
+							refetch();
+						}}
+					/>
+				</Render>
+			</View>
+			<Details />
+		</React.Fragment>
 	);
 }

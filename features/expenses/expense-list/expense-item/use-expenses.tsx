@@ -10,7 +10,8 @@ export default function useExpenses() {
 	const { expense } = useActions();
 	const [page, setPage] = React.useState(1);
 	const userId = user._id;
-	const response = useQuery(["expenses", userId], () => getExpenses({ userId, page }), {
+
+	const response = useQuery(["expenses", ], () => getExpenses({ userId, page }), {
 		onSuccess(data) {
 			expense.addExpense(data.docs);
 		},

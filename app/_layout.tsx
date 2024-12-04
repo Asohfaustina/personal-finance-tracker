@@ -10,11 +10,12 @@ import Toast from "@/components/toast";
 function AppRoot() {
 	const { isLoading, isOnboarded } = useCached();
 
-	if (!isOnboarded) {
-		return <Redirect href="/welcome" />;
-	}
+	// if (!isOnboarded) {
+	// 	return <Redirect href="/welcome" />;
+	// }
 	return (
 		<Loading isLoading={isLoading}>
+			{!isOnboarded && <Redirect href="/welcome" />}
 			<Slot />
 		</Loading>
 	);

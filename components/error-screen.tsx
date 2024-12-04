@@ -9,14 +9,16 @@ type ErrorScreenProps = {
   retry?: Function;
 };
 export function ErrorScreen(props: ErrorScreenProps) {
-  const press = () => {
-    if (props.retry) props.retry();
-  };
-  return (
+	const press = () => {
+		if (props.retry) props.retry();
+	};
+	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.box}>
 				<Text>Error Screen</Text>
-				<Text style={styles.text}>Error message: {props.error?.message}</Text>
+				<Text style={styles.text}>
+					Error message: {typeof props.error === "string" ? props.error : props.error?.message}
+				</Text>
 				<Spacer height={20} />
 				<AppButton press={press}>
 					<Text>Retry?</Text>
@@ -27,16 +29,17 @@ export function ErrorScreen(props: ErrorScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "transparent",
-  },
-  box: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: layout.padding.xs,
-  },
-  text: {
-    textAlign: "center",
-  },
+	container: {
+		flex: 1,
+		backgroundColor: "transparent",
+	},
+	box: {
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+		paddingHorizontal: layout.padding.xs,
+	},
+	text: {
+		textAlign: "center",
+	},
 });

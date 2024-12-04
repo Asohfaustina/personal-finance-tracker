@@ -42,7 +42,7 @@ export default React.memo(function Render(props: RenderProps) {
   if (isError) {
     if (!showError) return null
     if (errorComponent) return errorComponent
-    return <ErrorScreen error={error as any} />
+    return <ErrorScreen error={error as any} retry={retry} />;
   }
 
   if(hideContent) return null

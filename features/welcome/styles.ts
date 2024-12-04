@@ -32,8 +32,9 @@ export const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: layout.font["2xl"],
+    fontSize: layout.font.xl,
     lineHeight: layout.height.l,
+    color: colors.primary[700],
     fontWeight: "600",
     textAlign: "center",
   },
