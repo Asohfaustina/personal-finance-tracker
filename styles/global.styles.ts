@@ -23,4 +23,10 @@ export const globalStyles = StyleSheet.create({
 		fontWeight: "600",
 		fontSize: layout.font.md,
 	},
+
+	buttonContainer: {
+		paddingVertical: layout.padding.sm+5,
+		marginVertical: layout.margin.md,
+		borderRadius: layout.radius.md,
+	},
 });

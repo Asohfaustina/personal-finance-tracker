@@ -6,17 +6,10 @@ const width = Math.floor(Dimensions.get("screen").width);
 
 export const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		width: width - 60,
-		backgroundColor: colors.white[200],
-		marginHorizontal: 3,
-		borderWidth: 0.1,
-		borderRadius: layout.radius.sm,
-	},
-	container2: {
-		flex: 1,
+		height: 220,
 		backgroundColor: colors.white[400],
-		marginVertical: 5,
+		marginVertical: layout.margin.sm,
+		marginHorizontal: layout.margin.md,
 		borderWidth: 0.2,
 		borderColor: colors.primary[900],
 		borderRadius: layout.radius.sm,
@@ -24,7 +17,6 @@ export const styles = StyleSheet.create({
 	cardBox: {
 		...globalStyles.bgNone,
 		flex: 1,
-		// gap:10,
 		padding: layout.padding.md,
 	},
 	headerBox: {
@@ -72,14 +64,42 @@ export const styles = StyleSheet.create({
 		fontSize: layout.font.sm,
 		color: colors.black[600],
 	},
-	actionBox: {
-		...globalStyles.bgNone,
-	},
-	actionText: {},
 
 	amount: {
 		fontSize: layout.font.l,
 		color: colors.primary[700],
 		fontWeight: "600",
+	},
+	actionBox: {
+		...globalStyles.bgNone,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		gap: 10,
+	},
+	editButton: {
+		...globalStyles.buttonContainer,
+		width: 170,
+		backgroundColor: colors.white[200],
+		borderColor: colors.primary[900],
+		borderWidth: 0.5,
+	},
+	editText: {
+		textAlign: "center",
+		color: colors.primary[900],
+		fontSize: layout.font.md,
+	},
+
+	dissolve: {
+		...globalStyles.buttonContainer,
+		width: 170,
+		backgroundColor: colors.white[200],
+		borderColor: colors.warning[700],
+		borderWidth: 0.5,
+	},
+
+	dissolveText: {
+		textAlign: "center",
+		color: colors.warning[700],
+		fontSize: layout.font.md,
 	},
 });

@@ -34,7 +34,6 @@ export default function useBudgetActions(close: (state?: boolean) => void) {
 		duration: budget?.duration ?? "",
 		budget: String(budget?.budget ?? ""),
 	});
-	console.log(formData)
 
 	const { expense, ui } = useActions();
 

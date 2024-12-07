@@ -6,7 +6,6 @@ import useBudget from "./use-budget";
 import { globalStyles } from "@/styles/global.styles";
 import { styles } from "./styles";
 import { amountSeparator } from "@/lib/amount-separator";
-import { colors, layout } from "@/constants";
 import ProgressBar from "./progress-bar";
 import UpdateBudget from "./update-budget";
 

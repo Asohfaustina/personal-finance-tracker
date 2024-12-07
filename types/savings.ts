@@ -15,8 +15,8 @@ export type Savings = {
 
 export type SavingsHistory = {
 	_id: string;
-	savings_id: string;
-	amount: string;
+	savingsId: string;
+	amount: number;
 	currency: string;
 	amountBeforePayment: number;
 	amountAfterPayment: number;

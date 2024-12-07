@@ -19,8 +19,7 @@ export default React.memo(function Welcome() {
 	const position = React.useRef(new Animated.Value(0)).current;
 	const { root } = useActions();
 	const slideCount = data.length;
-	
-	console.log(isOnboarded);
+
 	if (isOnboarded) return <Redirect href={"/"} />;
 
 	const navigate = (type: "login" | "signUp") => {

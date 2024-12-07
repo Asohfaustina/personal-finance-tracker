@@ -11,6 +11,12 @@ export const styles = StyleSheet.create({
 		gap: 5,
 	},
 
+	container2: {
+		flex: 1,
+		...globalStyles.bgNone,
+		padding: layout.padding.md,
+	},
+
 	slidesBox: {
 		width: "100%",
 		...globalStyles.bgNone,

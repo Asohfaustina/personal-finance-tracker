@@ -81,7 +81,7 @@ export default function () {
 						<Text style={[styles.signUpText]}>
 							{" "}
 							Have an account? {""}
-							<Link href={".."} style={[styles.recoveryText]}>
+							<Link href={"/"} style={[styles.recoveryText]}>
 								Sign In
 							</Link>
 						</Text>

@@ -5,13 +5,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export type SavingsState = {
 	savings: Savings[];
 	history: SavingsHistory[];
-	details: Savings;
+	details: Savings | null;
 };
 
 const initialState: SavingsState = {
 	savings: [],
 	history: [],
-	details: {} as Savings,
+	details: null,
 };
 
 const savingsSlice = createSlice({
@@ -37,8 +37,16 @@ const savingsSlice = createSlice({
 				history: [...updates, ...state.history],
 			};
 		},
+		setSavingsDetails: (state, action: PayloadAction<Savings>) => {
+			return {
+				...state,
+				details: action.payload,
+			};
+		},
 
-		updateSavings: (state, action: PayloadAction<Partial<Savings>>) => {
+		updateSavingsDetails: (state, action: PayloadAction<Partial<Savings>>) => {
+			if (!state.details) return { ...state };
+
 			const updates = updateObject(state.details, action.payload);
 			const updatedList = state.savings.map((item) =>
 				item._id === updates._id ? { ...item, ...updates } : item
@@ -49,8 +57,29 @@ const savingsSlice = createSlice({
 				details: updates,
 			};
 		},
+
+		dissolveSavings: (state, action: PayloadAction<string>) => {
+			const find = state.savings.find((item) => item._id === action.payload);
+
+			if (find) {
+				const first = state.savings.find((item) => item._id !== find._id);
+				if (first) {
+					const updatedList = state.savings
+						.filter((item) => item._id !== find._id)
+						.map((item) =>
+							item._id == first._id ? { ...item, amount: item.amount + find.amount } : item
+						);
+
+					return {
+						...state,
+						savings: updatedList,
+					};
+				}
+			}
+		},
 	},
 });
 
-export const { addSavings, addHistory, updateSavings } = savingsSlice.actions;
+export const { addSavings, addHistory, setSavingsDetails, updateSavingsDetails, dissolveSavings } =
+	savingsSlice.actions;
 export default savingsSlice.reducer;

@@ -3,7 +3,13 @@ import { AccountState, changeAccountState, updateUser } from "./account.slice";
 import { useAppDispatch } from "./hooks";
 import { changeHasSetup, changeIsLoggedIn, changeIsOnboarded } from "./root.slice";
 import { changeLoading, ToastAction, toggleToast } from "./ui-slice";
-import { addHistory, addSavings, updateSavings } from "./savings-slice";
+import {
+	addHistory,
+	addSavings,
+	dissolveSavings,
+	setSavingsDetails,
+	updateSavingsDetails,
+} from "./savings-slice";
 import { Savings, SavingsHistory } from "@/types/savings";
 import { addExpense, updateBudget } from "./expense-slice";
 import { Expense } from "@/types/expense";
@@ -35,7 +41,9 @@ export default function useActions() {
 	const savings = {
 		addSavings: (payload: Savings[]) => dispatch(addSavings(payload)),
 		addHistory: (payload: SavingsHistory[]) => dispatch(addHistory(payload)),
-		updateSavings: (payload: Partial<Savings>) => dispatch(updateSavings(payload)),
+		setSavingsDetails: (payload: Savings) => dispatch(setSavingsDetails(payload)),
+		updateSavingsDetails: (payload: Partial<Savings>) => dispatch(updateSavingsDetails(payload)),
+		dissolveSavings: (payload: string) => dispatch(dissolveSavings(payload)),
 	};
 
 	const expense = {

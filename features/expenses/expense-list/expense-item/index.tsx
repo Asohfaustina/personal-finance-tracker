@@ -1,7 +1,6 @@
 import { Text, View } from "@/components/theme";
 import { Expense } from "@/types/expense";
 import { styles } from "./styles";
-import { Ionicons } from "@expo/vector-icons";
 import { amountSeparator } from "@/lib/amount-separator";
 import { Link } from "expo-router";
 import Icon from "./icon";

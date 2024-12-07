@@ -1,7 +1,5 @@
-import { Text, View } from "@/components/theme";
+import Savings from "@/features/savings";
 
-export default function Home() {
-    return <View>
-        <Text>Home</Text>
-    </View>
+export default function SavingsScreen () {
+	return <Savings />;
 }
