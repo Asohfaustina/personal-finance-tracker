@@ -1,23 +1,24 @@
-import { layout } from "@/constants";
 import { StyleSheet } from "react-native";
+import { layout } from "@/constants";
+import { globalStyles } from "@/styles/global.styles";
 export const styles = StyleSheet.create({
-	container: {
+	img: {
+		borderRadius: layout.radius.xl,
 		alignItems: "center",
 		justifyContent: "center",
 		position: "relative",
-		// backgroundColor: "rgba(0,0,0,0.1)",
-		borderRadius: layout.radius.full,
-		borderWidth: 0.2,
 	},
 	loading: {
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	actualImg: {
 		position: "absolute",
 		top: 0,
 		left: 0,
+		zIndex: 1,
 		width: "100%",
 		height: "100%",
-		backgroundColor: "rgba(0,0,0,0.1)",
-		zIndex: 1,
-		alignItems: "center",
-		justifyContent: "center",
+		borderRadius: layout.radius.xl,
 	},
 });

@@ -15,7 +15,7 @@ import {
 import { AppButton } from "@/components/app-button";
 import BaseButton from "@/components/ui/base-button";
 import { globalStyles } from "@/styles/global.styles";
-import TextArea from "@/components/ui/text-area";
+
 
 type SavingsProps = {
 	open: boolean;
@@ -23,7 +23,7 @@ type SavingsProps = {
 };
 
 export default React.memo(function EditSavings(props: SavingsProps) {
-	const { isLoading, formData, updateForm, update } = useEditSavings(props.close);
+	const { isLoading, formData, updateForm, update, close } = useEditSavings(props.close);
 
 	const [showDatePicker, setShowDatePicker] = useState(false);
 
@@ -38,8 +38,8 @@ export default React.memo(function EditSavings(props: SavingsProps) {
 
 	return (
 		<React.Fragment>
-			<BottomSheet type="1"  max={0.57} min={0.53} title={"Edit savings"}>
-				<ScrollView style={{height: 200}}>
+			<BottomSheet type="1" max={0.57} min={0.53} title={"Edit savings"}>
+				<ScrollView style={{ height: 200 }}>
 					<TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
 						<KeyboardAvoidingView
 							style={styles.container}
@@ -107,7 +107,7 @@ export default React.memo(function EditSavings(props: SavingsProps) {
 							</View>
 
 							<View style={styles.actionBox}>
-								<AppButton press={props.close} style={styles.dismissBox}>
+								<AppButton press={close} style={styles.dismissBox} disabled={isLoading}>
 									<Text style={styles.dismissText}>Dismiss</Text>
 								</AppButton>
 								<BaseButton

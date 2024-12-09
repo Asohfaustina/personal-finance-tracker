@@ -1,7 +1,5 @@
-import { Text, View } from "@/components/theme";
+import Profile from "@/features/profile";
 
 export default function Home() {
-    return <View>
-        <Text>Home</Text>
-    </View>
+	return <Profile />;
 }

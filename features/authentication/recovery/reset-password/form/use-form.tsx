@@ -1,5 +1,5 @@
 import ensureError from "@/lib/ensure-error";
-import resetPassword from "@/services/account/reset-password";
+import recoverPassword from "@/services/account/recover-password";
 import useActions from "@/store/actions";
 import { router, useLocalSearchParams } from "expo-router";
 import * as React from "react";
@@ -41,7 +41,7 @@ export default function useForm() {
 		setIsLoading(true);
 		try {
 			const formValues = validate.parse(formData);
-			await resetPassword({ email, otp, ...formValues });
+			await recoverPassword({ email, otp, ...formValues });
 			ui.toggleToast({
 				msgs: "Password Reset successfully",
 				show: true,

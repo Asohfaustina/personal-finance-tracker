@@ -70,6 +70,10 @@ export default function useForm() {
 		}
 	};
 
+	React.useEffect(() => {
+		resend();
+	}, []);
+
 	return {
 		isLoading,
 		isError,

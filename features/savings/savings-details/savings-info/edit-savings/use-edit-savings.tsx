@@ -63,10 +63,16 @@ export default function useEditSavings(close: () => void) {
 		}
 	};
 
+	const handleClose = () => {
+		if (isLoading) return;
+		close();
+	};
+
 	return {
 		formData,
 		isLoading,
 		updateForm,
 		update,
+		close: handleClose,
 	};
 }

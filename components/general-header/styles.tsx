@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
 		...Platform.select({
 			android: {
 				borderBottomWidth: 0.5,
-				borderColor: colors.dim,
+				borderColor: colors.mute,
 			},
 			ios: {
 				borderBottomWidth: 0.3,

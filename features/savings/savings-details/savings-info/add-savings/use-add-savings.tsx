@@ -28,6 +28,7 @@ export default function useAddSavings() {
 	};
 
 	const actions = (type: "open" | "close") => {
+		if (isLoading) return;
 		if (type === "open") return setOpen(true);
 		return setOpen(false);
 	};

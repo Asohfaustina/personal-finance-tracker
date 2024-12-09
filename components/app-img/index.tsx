@@ -11,7 +11,7 @@ type AppImageProps = ImageProps & {
 	size?: number;
 	source?: ImageSourcePropType | string | null | undefined;
 	circle?: boolean;
-	containerStyle: StyleProp<ViewProps>;
+	containerStyle?: StyleProp<ViewProps>;
 };
 
 export default React.memo(function AppImage(props: AppImageProps) {
