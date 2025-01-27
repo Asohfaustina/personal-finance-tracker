@@ -3,8 +3,8 @@ import { User } from "./user";
 export type Savings = {
 	_id: string;
 	title: string;
-	comments: string | undefined;
-	createdBy: User;
+	comments?: string 
+	createdBy: string;
 	amount: number;
 	targetAmount: number;
 	currency: string;

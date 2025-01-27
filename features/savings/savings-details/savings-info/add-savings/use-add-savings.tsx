@@ -47,8 +47,8 @@ export default function useAddSavings() {
 			const formValues = validate.parse({
 				...formData,
 			});
-			const response = await addSavings({ ...formValues, savingsId: details._id });
-			savings.addHistory([response]);
+			const response = await addSavings({ ...formValues, savingsId: details._id, currency: "NGN" });
+			savings.addHistory({ savingsId: response.savingsId, data: [response] });
 			savings.updateSavingsDetails({ amount: details.amount + response.amount });
 			ui.toggleToast({ msgs: "Savings added Successfully", show: true });
 			actions('close');

@@ -1,4 +1,5 @@
 
+import updateObject from "@/lib/update-object";
 import { Budget } from "@/types/budget";
 import { Expense } from "@/types/expense";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -27,14 +28,25 @@ const expenseSlice = createSlice({
 			};
 		},
 
-		updateBudget: (state, action: PayloadAction<Budget | null>) => {
+		updateBudget: (state, action: PayloadAction<Partial<Budget>>) => {
+			if (state.budget) {
+				const updates = updateObject(state.budget, action.payload);
+				return {
+					...state,
+					budget: updates,
+				};
+			}
+			return { ...state };
+		},
+		setBudget: (state, action: PayloadAction<Budget | null>) => {
 			return {
 				...state,
 				budget: action.payload,
 			};
 		},
+		resetExpenseState: () => initialState,
 	},
 });
 
-export const { addExpense, updateBudget } = expenseSlice.actions;
+export const { addExpense, setBudget, updateBudget, resetExpenseState } = expenseSlice.actions;
 export default expenseSlice.reducer;

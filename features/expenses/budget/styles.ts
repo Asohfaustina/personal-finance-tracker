@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
 
 	budgetContainer: {
 		flex: 1,
+		gap:20,
 		justifyContent: "center",
 		...globalStyles.px,
 		...globalStyles.bgNone,
@@ -55,10 +56,11 @@ export const styles = StyleSheet.create({
 	},
 	progressIndicator: {
 		height: 10,
-		backgroundColor: colors.primary[500],
+		backgroundColor: colors.primary[700],
 		borderRadius: layout.radius.md,
 	},
 
+	dangerZone: { backgroundColor: colors.warning[600] },
 	currency: {
 		fontSize: layout.font.xs,
 		fontWeight: "600",
@@ -67,6 +69,7 @@ export const styles = StyleSheet.create({
 
 	noBudgetBox: {
 		...globalStyles.bgNone,
+		paddingVertical: layout.padding.md,
 	},
 
 	noBudgetText: {

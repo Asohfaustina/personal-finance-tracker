@@ -8,7 +8,7 @@ type Payload = {
 };
 
 export async function production({ email, otp, ...payload }: Payload): Promise<void> {
-	const response = await axios.post(`/auth/recover?email=${email}&otp=${otp}`, payload);
+	const response = await axios.post(`/v1/auth/recover`, payload);
 	return response.data;
 }
 
@@ -21,6 +21,6 @@ export async function development(): Promise<void> {
 }
 
 export default async function recoverPassword(payload: Payload): Promise<void> {
-	if (variables.NODE_ENV === "production") return production(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development();
 }

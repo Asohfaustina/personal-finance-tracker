@@ -7,10 +7,11 @@ import { SavingsHistory } from "@/types/savings";
 type Payload = {
 	savingsId: string;
 	amount: number;
+	currency: string;
 };
 
-export async function production({ savingsId, ...payload }: Payload): Promise<SavingsHistory> {
-	const response = await axios.post(`/savings/${savingsId}/history`, payload);
+export async function production(payload: Payload): Promise<SavingsHistory> {
+	const response = await axios.post(`/v1/savings-history`, payload);
 	return response.data;
 }
 
@@ -38,6 +39,6 @@ export async function development(payload: Payload): Promise<SavingsHistory> {
 }
 
 export default async function addSavings(payload: Payload): Promise<SavingsHistory> {
-	if (variables.NODE_ENV === "production") return production(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development(payload);
 }

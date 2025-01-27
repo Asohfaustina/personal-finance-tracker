@@ -10,11 +10,11 @@ type Payload = {
 };
 
 export async function production(payload: Payload): Promise<User> {
-	const response = await axios.post(`/auth/register/`, payload);
+	const response = await axios.post(`/v1/auth/register/`, payload);
 	return response.data;
 }
 
-export async function development(payload: Payload): Promise<User> {
+export async function development(): Promise<User> {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(users[0]);
@@ -23,6 +23,6 @@ export async function development(payload: Payload): Promise<User> {
 }
 
 export default async function createAccount(payload: Payload): Promise<User> {
-	if (variables.NODE_ENV === "production") return production(payload);
-	return development(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
+	return development();
 }

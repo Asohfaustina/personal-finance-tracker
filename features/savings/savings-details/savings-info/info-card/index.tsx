@@ -10,6 +10,7 @@ import truncate from "@/lib/truncate";
 import { AppButton } from "@/components/app-button";
 import EditSavings from "../edit-savings";
 import DissolveSavings from "../dissolve-savings";
+import { amountSeparator } from "@/lib/amount-separator";
 
 export default React.memo(function InfoCard() {
 	const { isFetching, isError, error, details, edit, dissolve, openActions, closeActions } =
@@ -31,7 +32,7 @@ export default React.memo(function InfoCard() {
 									<View style={styles.amountBox}>
 										<Text style={styles.amount}>
 											<Text style={styles.currency}>{details.currency.toUpperCase()} </Text>
-											{details.amount}
+											{amountSeparator(details.amount)}
 										</Text>
 									</View>
 								</View>
@@ -53,7 +54,7 @@ export default React.memo(function InfoCard() {
 									<Text style={styles.durationText}>
 										Target:{" "}
 										<Text style={styles.durationDate}>
-											{details.currency.toUpperCase()} {details.targetAmount}
+											{details.currency.toUpperCase()} {amountSeparator(details.targetAmount)}
 										</Text>
 									</Text>
 								</View>

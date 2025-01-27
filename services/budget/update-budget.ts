@@ -10,7 +10,7 @@ type payload = {
 };
 
 export async function production({ id, ...payload }: payload): Promise<Budget> {
-	const response = await axios.patch(`/expenses/budget/${id}`, payload);
+	const response = await axios.patch(`/v1/budget/${id}`, payload);
 	return response.data;
 }
 
@@ -25,6 +25,6 @@ export async function development(payload: payload): Promise<Budget> {
 }
 
 export default async function updateBudget(payload: payload): Promise<Budget> {
-	if (variables.NODE_ENV === "production") return production(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development(payload);
 }

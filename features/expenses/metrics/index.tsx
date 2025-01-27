@@ -45,7 +45,7 @@ export default React.memo(function Metrics() {
 			>
 				{open && <Text style={styles.chartHeader}>Chart</Text>}
 				<AppButton press={toggle}>
-					<Text type="link"> {open ? "Hide" : "Show"} Chart</Text>
+					<Text style={styles.actionText} >{open ? "Hide" : "Show"} Chart</Text>
 				</AppButton>
 			</View>
 			<Animated.View

@@ -4,9 +4,9 @@ import * as React from "react";
 import store from "@/store";
 import { createSelector } from "@reduxjs/toolkit";
 import { z } from "zod";
-import updateBudget from "@/services/expenses/update-budget";
+import updateBudget from "@/services/budget/update-budget";
 import ensureError from "@/lib/ensure-error";
-import createBudget from "@/services/expenses/create-budget";
+import createBudget from "@/services/budget/create-budget";
 
 const selectAccount = (state: ReturnType<typeof store.getState>) => state.account;
 const selectExpense = (state: ReturnType<typeof store.getState>) => state.expenses;
@@ -72,9 +72,9 @@ export default function useBudgetActions(close: (state?: boolean) => void) {
 				currency: "ngn",
 				userId,
 			};
-	
+
 			const response = await createBudget(payload);
-			expense.updateBudget(response);
+			expense.setBudget(response);
 			ui.toggleToast({ msgs: "Budget Created Successfully", show: true });
 			close(false);
 		} catch (e) {
@@ -85,9 +85,12 @@ export default function useBudgetActions(close: (state?: boolean) => void) {
 		}
 	};
 
+	const isUpdate = React.useMemo(() => {
+		return budget !== null;
+	}, [budget]);
 	return {
 		formData,
-		isUpdate: budget !== null,
+		isUpdate,
 		isLoading,
 		updateForm,
 		update,

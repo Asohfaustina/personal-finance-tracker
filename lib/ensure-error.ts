@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import { ZodError } from "zod";
 
 export default function ensureError(err: unknown): Error {
+  console.log(err);
   if (err instanceof ZodError) {
     const newError = new Error(err.errors[0].message);
     return newError;

@@ -3,6 +3,7 @@ import { SafeAreaView } from "@/components/theme";
 import { info } from "@/constants";
 import { globalStyles } from "@/styles/global.styles";
 import SavingsSlides from "./savings-slides";
+import CreateSavings from "./create-savings";
 
 export default function Savings() {
 	return (
@@ -16,6 +17,7 @@ export default function Savings() {
 				infoBody={info.screenInfo.savings.text}
 			/>
 			<SavingsSlides scope="2" />
+			<CreateSavings/>
 		</SafeAreaView>
 	);
 }

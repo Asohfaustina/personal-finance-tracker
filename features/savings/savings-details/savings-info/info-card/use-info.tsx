@@ -25,6 +25,7 @@ export default function useInfo() {
 		onSuccess(data) {
 			savings.setSavingsDetails(data);
 		},
+		
 	});
 
 	return {

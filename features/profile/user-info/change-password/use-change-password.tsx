@@ -35,11 +35,11 @@ export default function useChangePassword(close: () => void) {
 	};
 
 	const update = async () => {
-		if (!user?._id) return;
+		if (!user?.email) return;
 		setIsLoading(true);
 		try {
 			const formValues = validate.parse(formData);
-			await resetPassword({ ...formValues, user_id: user._id });
+			await resetPassword({ ...formValues, email: user.email });
 			ui.toggleToast({ msgs: "Password Updated Successfully", show: true });
 			reset();
 		} catch (e) {

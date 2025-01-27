@@ -3,7 +3,7 @@ import axios from "@/lib/axios";
 import { savings } from "@/constants/data/savings";
 
 export async function production(id: string): Promise<void> {
-	const response = await axios.delete(`/savings/${id}`);
+	const response = await axios.delete(`/v1/savings/${id}/dissolve`);
 	return response.data;
 }
 
@@ -19,6 +19,6 @@ export async function development(id: string): Promise<void> {
 }
 
 export default async function dissolveSavings(id: string): Promise<void> {
-	if (variables.NODE_ENV === "production") return production(id);
+	if (variables.SERVICE_ENV === "production") return production(id);
 	return development(id);
 }

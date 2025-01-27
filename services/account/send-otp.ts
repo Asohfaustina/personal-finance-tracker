@@ -6,11 +6,11 @@ type Payload = {
 };
 
 export async function production(payload: Payload): Promise<void> {
-	const response = await axios.post(`/auth/otp?email=${payload.email}`);
+	const response = await axios.post(`/v1/auth/otp/send?email=${payload.email}`);
 	return response.data;
 }
 
-export async function development(payload: Payload): Promise<void> {
+export async function development(): Promise<void> {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve();
@@ -19,6 +19,6 @@ export async function development(payload: Payload): Promise<void> {
 }
 
 export default async function sendOtp(payload: Payload): Promise<void> {
-	if (variables.NODE_ENV === "production") return production(payload);
-	return development(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
+	return development();
 }

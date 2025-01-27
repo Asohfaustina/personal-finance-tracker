@@ -1,6 +1,6 @@
 import ensureError from "@/lib/ensure-error";
-import sendOtp from "@/services/account/send-otp";
-import verifyAccount from "@/services/account/verify-account";
+import sendEmailVerificationOtp from "@/services/account/send-email-verification-otp";
+import verifyEmail from "@/services/account/verify-email";
 import useActions from "@/store/actions";
 import { router, useLocalSearchParams } from "expo-router";
 import * as React from "react";
@@ -33,7 +33,7 @@ export default function useForm() {
 		if (!email) return;
 		setIsLoading(true);
 		try {
-			await sendOtp({ email });
+			await sendEmailVerificationOtp({ email });
 			ui.toggleToast({
 				msgs: "OTP sent to email",
 				show: true,
@@ -55,7 +55,7 @@ export default function useForm() {
 		try {
 			const formValues = validate.parse(formData);
 
-			await verifyAccount({ email, ...formValues });
+			await verifyEmail({ email, ...formValues });
 			ui.toggleToast({
 				msgs: "Email Verified",
 				show: true,

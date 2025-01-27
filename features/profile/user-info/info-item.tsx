@@ -4,6 +4,7 @@ import { UserInfo } from ".";
 import { AppButton } from "@/components/app-button";
 import { StyleSheet } from "react-native";
 import { colors, layout } from "@/constants";
+import { globalStyles } from "@/styles/global.styles";
 
 export default React.memo(function InfoItem(props: UserInfo) {
 	return (
@@ -12,8 +13,8 @@ export default React.memo(function InfoItem(props: UserInfo) {
 				{props.icon}
 				<Text style={styles.title}>{props.title}</Text>
 			</View>
-			<AppButton press={props.press} style={styles.actionBox}>
-				<Text type="link" style={styles.actionText}>
+			<AppButton press={!props.disabled ? props.press : () => {}} style={styles.actionBox}>
+				<Text type="link" style={[styles.actionText, props.disabled && globalStyles.disabled]}>
 					{props.actionText}
 				</Text>
 			</AppButton>

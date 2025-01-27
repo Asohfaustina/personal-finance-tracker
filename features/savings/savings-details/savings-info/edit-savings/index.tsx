@@ -62,7 +62,7 @@ export default React.memo(function EditSavings(props: SavingsProps) {
 								<Text style={styles.label}>Comments</Text>
 								<Input
 									type="text"
-									keyboardType="numeric"
+									keyboardType="default"
 									placeholder="Enter Comments"
 									value={formData.comments}
 									onChange={(e) => updateForm("comments", e)}

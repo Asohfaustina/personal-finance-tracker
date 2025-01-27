@@ -1,4 +1,5 @@
 import { Loading } from "@/components/loading";
+import { Security } from "@/components/security";
 import store from "@/store";
 import { useAppSelector } from "@/store/hooks";
 import { createSelector } from "@reduxjs/toolkit";
@@ -29,7 +30,7 @@ export default function MainLayout() {
 	}, [navigation]);
 
 	return (
-		<Loading>
+		<Security>
 			{!isLoggedIn ? (
 				<Redirect href={"/welcome"} />
 			) : (
@@ -39,6 +40,6 @@ export default function MainLayout() {
 					</Stack>
 				</Loading>
 			)}
-		</Loading>
+		</Security>
 	);
 }

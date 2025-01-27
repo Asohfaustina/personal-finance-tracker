@@ -4,8 +4,8 @@ import { users } from "@/constants/data/users";
 import axios from "@/lib/axios";
 
 export async function production(): Promise<User> {
-	const response = await axios.get(`/auth/whoami/`);
-	return response.data.payload;
+	const response = await axios.get(`/v1/auth/whoami/`);
+	return response.data;
 }
 
 export async function development(): Promise<User> {
@@ -17,6 +17,6 @@ export async function development(): Promise<User> {
 }
 
 export default async function whoami(): Promise<User> {
-	if (variables.NODE_ENV === "production") return production();
+	if (variables.SERVICE_ENV === "production") return production();
 	return development();
 }

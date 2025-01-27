@@ -18,6 +18,7 @@ export type UserInfo = {
 	icon: typeof Feather.prototype;
 	actionText: string;
 	press: () => void;
+	disabled?: boolean;
 };
 
 type ActionTypes = "edit" | "password" | "logout" | "";
@@ -42,8 +43,9 @@ export default function UserInfo() {
 			id: 2,
 			title: "Verify Email",
 			icon: <Feather name="check-circle" size={25} color={colors.primary[600]} />,
-			actionText: "Verify",
+			actionText: user.isEmailVerified ? "Verified" : "Verify",
 			press: () => router.navigate(`/(root)/verify-email?email=${user.email}`),
+			disabled: user.isEmailVerified,
 		},
 		{
 			id: 3,

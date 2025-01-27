@@ -4,13 +4,13 @@ import { ExpenseType } from "@/types/expense";
 
 type Query = {
 	userId: string;
-	month?: string;
+	month: string;
 };
 
-type ReturnType = { [id in ExpenseType]: number };
+type ReturnType = Record<ExpenseType, number>;
 
 export async function production({ userId, month }: Query): Promise<ReturnType> {
-	const response = await axios.get(`/expenses/metrics?userId=${userId}&month=${month}`);
+	const response = await axios.get(`/v1/expenses/${userId}/metrics?month=${month}`);
 	return response.data;
 }
 
@@ -31,6 +31,6 @@ export async function development(): Promise<ReturnType> {
 }
 
 export default async function getExpenseMetrics(query: Query): Promise<ReturnType> {
-	if (variables.NODE_ENV === "production") return production(query);
+	if (variables.SERVICE_ENV === "production") return production(query);
 	return development();
 }

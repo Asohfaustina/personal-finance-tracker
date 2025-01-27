@@ -6,12 +6,17 @@ import { Expense } from "@/types/expense";
 import { expenses } from "@/constants/data/expenses";
 
 type Query = Partial<PaginationQuery> & {
-	userId: string;
+	createdBy: string;
+	category?: string;
 };
 
-export async function production({ userId, ...query }: Query): Promise<PaginatedResponse<Expense>> {
+export async function production({
+	createdBy,
+	...query
+}: Query): Promise<PaginatedResponse<Expense>> {
 	const query_list = buildQueryString(query);
-	const response = await axios.get(`/expenses?userId=${userId}&${query_list}`);
+	const response = await axios.get(`/v1/expenses?createdBy=${createdBy}&${query_list}`);
+	console.log(response.data);
 	return response.data;
 }
 
@@ -35,6 +40,6 @@ export async function development(): Promise<PaginatedResponse<Expense>> {
 }
 
 export default async function getExpenses(query: Query): Promise<PaginatedResponse<Expense>> {
-	if (variables.NODE_ENV === "production") return production(query);
+	if (variables.SERVICE_ENV === "production") return production(query);
 	return development();
 }

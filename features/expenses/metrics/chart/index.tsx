@@ -1,4 +1,5 @@
 import { colors } from "@/constants";
+import { amountSeparator } from "@/lib/amount-separator";
 import capitalize from "@/lib/capitalize";
 import { ExpenseType } from "@/types/expense";
 import * as React from "react";
@@ -27,6 +28,13 @@ export default React.memo(function Chart(props: ChartData) {
 		"#F87B72", // Utilities (warning.500)
 		"#8F90A6", // Others (black.500)
 	];
+	// Dynamically compute tick values based on the maximum value in the data
+	const maxValue = Math.max(...data.map((d) => d.y));
+	const stepSize = Math.pow(10, Math.floor(Math.log10(maxValue)) - 1); // Dynamically calculate step size
+	const tickValues = Array.from(
+		{ length: Math.ceil(maxValue / stepSize) + 1 },
+		(_, i) => i * stepSize
+	);
 
 	return (
 		<View style={styles.container}>
@@ -34,7 +42,7 @@ export default React.memo(function Chart(props: ChartData) {
 				theme={VictoryTheme.grayscale}
 				domainPadding={{ x: 20, y: 20 }}
 				height={200}
-				padding={{ top: 10, right: 20, bottom: 30, left: 40 }}
+				padding={{ top: 10, right: 20, bottom: 30, left: 60 }}
 				width={width}
 			>
 				<VictoryAxis
@@ -46,6 +54,7 @@ export default React.memo(function Chart(props: ChartData) {
 				/>
 				<VictoryAxis
 					dependentAxis
+					tickFormat={(t) => amountSeparator(t.toString())}
 					style={{
 						axis: { stroke: "#000" },
 						tickLabels: { fontSize: 10, fill: "#000" },

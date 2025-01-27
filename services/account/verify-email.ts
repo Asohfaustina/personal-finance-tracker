@@ -9,7 +9,7 @@ type Payload = {
 
 export async function production(payload: Payload): Promise<void> {
 	const query_string = buildQueryString(payload);
-	const response = await axios.post(`/auth/otp?${query_string}`);
+	const response = await axios.post(`/v1/auth/otp/verify-email?${query_string}`);
 	return response.data;
 }
 
@@ -21,7 +21,7 @@ export async function development(payload: Payload): Promise<void> {
 	});
 }
 
-export default async function verifyAccount(payload: Payload): Promise<void> {
-	if (variables.NODE_ENV === "production") return production(payload);
+export default async function verifyEmail(payload: Payload): Promise<void> {
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development(payload);
 }

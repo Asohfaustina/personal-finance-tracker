@@ -1,32 +1,40 @@
-import { assets, variables } from "@/constants";
+import {  variables } from "@/constants";
 import { type User } from "@/types/user";
-import { users } from "@/constants/data/users";
+
 import axios from "@/lib/axios";
+import { Uploads } from "@/types/uploads";
 
 type UpdateAvatarParams = {
 	userId: string;
-	imgData: string;
-	imgSize: number;
-	imgMimetype: string;
+	fileData: string;
+	fileSize: number;
+	fileMimetype: string;
 };
 
-export async function production({ userId, ...data }: UpdateAvatarParams): Promise<User> {
-	const response = await axios.put(`/users/${userId}/avatar/`, data);
+
+type Response = Uploads
+export async function production({ userId, ...data }: UpdateAvatarParams): Promise<Response> {
+	const response = await axios.post(`/users/${userId}/avatar/`, data);
 	return response.data;
 }
 
-export async function development(): Promise<User> {
+export async function development(): Promise<Response> {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve({
-				...users[0],
-				avatar: assets.userIcon,
+				_id: "",
+    name: "",
+    url: "",
+    mimetype: "",
+    size: "",
+    createdAt: "",
+    updatedAt: "",
 			});
 		}, 2000);
 	});
 }
 
-export default async function uploadAvatar(data: UpdateAvatarParams): Promise<User> {
-	if (variables.NODE_ENV === "production") return production(data);
+export default async function uploadAvatar(data: UpdateAvatarParams): Promise<Response> {
+	if (variables.SERVICE_ENV === "production") return production(data);
 	else return development();
 }

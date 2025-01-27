@@ -14,6 +14,7 @@ export default function () {
 	const isVerified = React.useMemo(() => {
 		return user.isEmailVerified;
 	}, [user.avatar]);
+	
 	return (
 		<View style={styles.container}>
 			<View style={styles.avatarBox}>

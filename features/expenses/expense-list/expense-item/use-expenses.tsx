@@ -11,11 +11,11 @@ export default function useExpenses() {
 	const [page, setPage] = React.useState(1);
 	const userId = user._id;
 
-	const response = useQuery(["expenses", ], () => getExpenses({ userId, page }), {
-		onSuccess(data) {
-			expense.addExpense(data.docs);
-		},
-	});
+const response = useQuery(["expenses", userId], () => getExpenses({ createdBy: userId }), {
+	onSuccess(data) {
+		expense.addExpense(data.docs);
+	},
+});
 	return {
 		...response,
 		hasMore: response.data?.hasNextPage ?? false,

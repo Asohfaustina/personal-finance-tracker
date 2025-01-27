@@ -35,8 +35,9 @@ const accountSlice = createSlice({
 				user: action.payload.user ?? state.user,
 			};
 		},
+		resetAccountState: ()=>initialState
 	},
 });
 
-export const { changeAccountState, updateUser } = accountSlice.actions;
+export const { changeAccountState, updateUser, resetAccountState, } = accountSlice.actions;
 export default accountSlice.reducer;

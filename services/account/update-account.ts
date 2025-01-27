@@ -8,7 +8,7 @@ type Payload = Partial<Omit<User, "_id" | "email">> & {
 };
 
 export async function production({ userId, ...payload }: Payload): Promise<User> {
-	const response = await axios.patch(`/users/${userId}`, payload);
+	const response = await axios.patch(`/v1/users/${userId}`, payload);
 	return response.data;
 }
 
@@ -23,6 +23,6 @@ export async function development(payload: Payload): Promise<User> {
 }
 
 export default async function updateAccount(payload: Payload): Promise<User> {
-	if (variables.NODE_ENV === "production") return production(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development(payload);
 }

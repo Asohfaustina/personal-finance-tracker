@@ -13,7 +13,7 @@ const validate = z.object({
 		.trim()
 		.min(3, "Title must be at least 3 characters")
 		.max(12, "Title must not exceed 12 characters"),
-	comments: z.string().trim().max(12, "Title must not exceed 12 characters").optional(),
+	comments: z.string().trim().max(30, "Comments must not exceed 30 characters").optional(),
 	targetAmount: z
 		.number({ message: "Savings Target must be a valid number" })
 		.positive({ message: "Savings Target must be a positive number" }),
@@ -42,6 +42,16 @@ export default function useEditSavings(close: () => void) {
 			[name]: value,
 		}));
 	};
+
+
+	React.useMemo(() => {
+		setFormData({
+			title: details?.title ?? "",
+			comments: details?.comments ?? "",
+			targetAmount: details?.targetAmount ?? 0,
+			duration: details?.duration ?? "",
+		});
+	}, [details]);
 
 	const update = async () => {
 		if (!details?._id) return;

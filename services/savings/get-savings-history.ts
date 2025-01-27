@@ -9,12 +9,9 @@ type Query = Partial<PaginationQuery> & {
 	savingsId: string;
 };
 
-export async function production({
-	savingsId,
-	...query
-}: Query): Promise<PaginatedResponse<SavingsHistory>> {
+export async function production(query: Query): Promise<PaginatedResponse<SavingsHistory>> {
 	const query_list = buildQueryString(query);
-	const response = await axios.get(`/savings/${savingsId}/history?${query_list}`);
+	const response = await axios.get(`/v1/savings-history?${query_list}`);
 	return response.data;
 }
 
@@ -40,6 +37,6 @@ export async function development(): Promise<PaginatedResponse<SavingsHistory>> 
 export default async function getSavingsHistory(
 	query: Query
 ): Promise<PaginatedResponse<SavingsHistory>> {
-	if (variables.NODE_ENV === "production") return production(query);
+	if (variables.SERVICE_ENV === "production") return production(query);
 	return development();
 }

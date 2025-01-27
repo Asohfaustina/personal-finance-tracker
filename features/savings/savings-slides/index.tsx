@@ -7,6 +7,7 @@ import Render from "@/components/render";
 import useSlides from "./use-slides";
 import SavingsCard from "./savings-card";
 import EmptyComponent from "@/components/empty-component";
+import EmptySavingsCard from "./savings-card/empty-savings-card";
 
 type SlidesProps = {
 	scope?: "1" | "2";
@@ -26,7 +27,7 @@ export default React.memo(function SavingsSlides({ scope = "1" }: SlidesProps) {
 	}, [savings]);
 
 	const hasData = React.useMemo(() => {
-		if (!savings) return false;
+		if (savings.length < 1) return false;
 		return savings.length > 0;
 	}, [savings]);
 
@@ -80,21 +81,25 @@ export default React.memo(function SavingsSlides({ scope = "1" }: SlidesProps) {
 	return (
 		<View style={styles.container}>
 			<Render isLoading={isFetching} isError={isError} error={error} loadingPosition="top">
-				<ScrollView
-					style={styles.slidesBox}
-					snapToInterval={width}
-					horizontal
-					ref={scrollRef}
-					scrollEnabled={false}
-					showsHorizontalScrollIndicator={false}
-					scrollEventThrottle={16}
-					decelerationRate={"fast"}
-					{...panResponder.panHandlers}
-				>
-					{savings.map((item, idx) => (
-						<SavingsCard key={item._id} {...item} />
-					))}
-				</ScrollView>
+				{savings.length < 1 ? (
+					<EmptySavingsCard />
+				) : (
+					<ScrollView
+						style={styles.slidesBox}
+						snapToInterval={width}
+						horizontal
+						ref={scrollRef}
+						scrollEnabled={false}
+						showsHorizontalScrollIndicator={false}
+						scrollEventThrottle={16}
+						decelerationRate={"fast"}
+						{...panResponder.panHandlers}
+					>
+						{savings.map((item, idx) => (
+							<SavingsCard key={item._id} {...item} />
+						))}
+					</ScrollView>
+				)}
 				<Dots count={slideCount} active={current} />
 			</Render>
 		</View>

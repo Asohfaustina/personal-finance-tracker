@@ -6,24 +6,22 @@ import { Link } from "expo-router";
 import { globalStyles } from "@/styles/global.styles";
 
 import Progress from "./progress";
-
- 
+import { amountSeparator } from "@/lib/amount-separator";
 
 export default React.memo(function SavingsCard(props: Savings & { scope?: "1" | "2" }) {
-	
-	
-	
 	return (
-		<Link href={{pathname:"/(root)/(main)/(tabs)/savings/[id]", params:{id:props._id}}} style={[props.scope === "2" ? styles.container2: styles.container]}>
+		<Link
+			href={{ pathname: "/(root)/(main)/(tabs)/savings/[id]", params: { id: props._id } }}
+			style={[props.scope === "2" ? styles.container2 : styles.container]}
+		>
 			<View style={styles.cardBox}>
 				<View style={styles.headerBox}>
-					<View style={[globalStyles.bgNone,]}>
+					<View style={[globalStyles.bgNone]}>
 						<Text style={styles.savingsTitle}>{props.title}</Text>
 						<View style={styles.amountBox}>
 							<Text style={styles.amount}>
 								<Text style={styles.currency}>{props.currency.toLocaleUpperCase()} </Text>
-								{props.amount}
-								
+								{amountSeparator(props.amount)}
 							</Text>
 						</View>
 					</View>
@@ -45,7 +43,7 @@ export default React.memo(function SavingsCard(props: Savings & { scope?: "1" | 
 						<Text style={styles.durationText}>
 							Target:{" "}
 							<Text style={styles.durationDate}>
-								{props.currency.toUpperCase()} {props.targetAmount}
+								{props.currency.toUpperCase()} {amountSeparator(props.targetAmount)}
 							</Text>
 						</Text>
 					</View>

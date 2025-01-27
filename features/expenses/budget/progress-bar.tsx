@@ -29,6 +29,7 @@ export default React.memo(function ProgressBar(props: ProgressBarProps) {
 		<Animated.View
 			style={[
 				styles.progressIndicator,
+				progressPercentage > 90 && styles.dangerZone,
 				{
 					width: animatedProgress.interpolate({
 						inputRange: [0, 100],

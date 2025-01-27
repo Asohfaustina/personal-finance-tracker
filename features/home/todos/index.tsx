@@ -18,7 +18,7 @@ export default React.memo(function Todos() {
 
 	if (hasSetup) return;
 
-	// TODO: add a link to the setup and change the icons to a befitting one
+
 	const data: CardData[] = [
 		{
 			id: 1,
@@ -31,14 +31,14 @@ export default React.memo(function Todos() {
 			id: 2,
 			title: "Create Savings",
 			note: "get started with your savings.",
-			icon: <AntDesign name="user" size={20} />,
+			icon: <AntDesign name="bank" size={20} />,
 			show: true,
 		},
 		{
 			id: 3,
 			title: "Set Budget",
 			note: "set your discipline by setting a budget.",
-			icon: <AntDesign name="user" size={20} />,
+			icon: <AntDesign name="barschart" size={20} />,
 			show: true,
 		},
 	];

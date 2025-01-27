@@ -2,7 +2,7 @@ import EmptyComponent from "@/components/empty-component";
 import Render from "@/components/render";
 import { Text, View } from "@/components/theme";
 import { FlatList } from "react-native";
-import useHistory from "./history-item/use-history";
+import useHistory from "./use-history";
 import * as React from "react";
 import HistoryItem from "./history-item";
 import { styles } from "./styles";
@@ -34,8 +34,8 @@ export default function HistoryList() {
 							if (!hasData) {
 								return (
 									<EmptyComponent
-										title="No Expense Record yet"
-										body="You don't have any Expense Record yet, create new Expense and they'll appear here"
+										title="No Savings Record yet"
+										body="You don't have any Savings Record yet, Add Savings and they'll appear here"
 									/>
 								);
 							}

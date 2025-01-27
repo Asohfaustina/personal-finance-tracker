@@ -5,14 +5,14 @@ import { Savings } from "@/types/savings";
 
 type Payload = {
 	id: string;
-	duration: string;
-	title: string;
-	targetAmount: number;
+	duration?: string;
+	title?: string;
+	targetAmount?: number;
 	comments?: string | undefined;
 };
 
 export async function production({ id, ...payload }: Payload): Promise<Savings> {
-	const response = await axios.patch(`/savings/${id}`, payload);
+	const response = await axios.patch(`/v1/savings/${id}`, payload);
 	return response.data;
 }
 
@@ -27,6 +27,6 @@ export async function development(payload: Payload): Promise<Savings> {
 }
 
 export default async function updateSavings(payload: Payload): Promise<Savings> {
-	if (variables.NODE_ENV === "production") return production(payload);
+	if (variables.SERVICE_ENV === "production") return production(payload);
 	return development(payload);
 }

@@ -18,7 +18,7 @@ export default React.memo(function Progress(props: ProgressProps) {
 	const circumference = 2 * Math.PI * radius;
 
 	const completed = useMemo(() => {
-		return props.amount === props.targetAmount;
+		return props.amount >= props.targetAmount;
 	}, [props]);
 
 	const progressPercentage = React.useMemo(() => {

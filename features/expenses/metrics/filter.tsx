@@ -12,7 +12,7 @@ export default React.memo(function Filter(props: FilterProps) {
 		const date = new Date(currentYear, idx, 1);
 		return {
 			label: date.toLocaleString("default", { month: "long" }),
-			value: date.toISOString(),
+			value: new Date(`${currentYear}-${date.getMonth() + 1}-01`).toISOString(),
 		};
 	});
 

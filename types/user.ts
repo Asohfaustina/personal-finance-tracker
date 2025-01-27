@@ -1,8 +1,10 @@
+import { Uploads } from "./uploads";
+
 export type User = {
 	_id: string;
 	name: string;
 	email: string;
-	avatar: string | undefined;
+	avatar: Uploads | null;
 	isActive: boolean;
 	isEmailVerified: boolean;
 	createdAt: string;

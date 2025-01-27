@@ -7,6 +7,7 @@ import * as React from "react";
 import ExpenseItem from "./expense-item";
 import { styles } from "./styles";
 import Details from "./details";
+import AddExpense from "../add-expense";
 
 export default function ExpenseList() {
 	const { isFetching, isError, error, isRefetching, expenses, hasMore, refetch, setPage } =
@@ -21,7 +22,13 @@ export default function ExpenseList() {
 	return (
 		<React.Fragment>
 			<View style={styles.container}>
-				<Render isLoading={isFetching} isError={isError} error={error} loadingPosition="top">
+				<Render
+					isLoading={isFetching}
+					isError={isError}
+					error={error}
+					retry={refetch}
+					loadingPosition="top"
+				>
 					<FlatList
 						renderItem={({ index, item }) => <ExpenseItem key={index} {...item} />}
 						showsVerticalScrollIndicator={false}
@@ -47,6 +54,7 @@ export default function ExpenseList() {
 				</Render>
 			</View>
 			<Details />
+			<AddExpense />
 		</React.Fragment>
 	);
 }

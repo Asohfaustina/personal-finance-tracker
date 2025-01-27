@@ -2,15 +2,20 @@ import updateObject from "@/lib/update-object";
 import { Savings, SavingsHistory } from "@/types/savings";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+export type SavingsHistoryPayload = {
+	savingsId: string;
+	data: SavingsHistory[];
+};
+
 export type SavingsState = {
 	savings: Savings[];
-	history: SavingsHistory[];
+	history: Record<string, SavingsHistory[]>;
 	details: Savings | null;
 };
 
 const initialState: SavingsState = {
 	savings: [],
-	history: [],
+	history: {},
 	details: null,
 };
 
@@ -28,13 +33,30 @@ const savingsSlice = createSlice({
 			};
 		},
 
-		addHistory: (state, action: PayloadAction<SavingsHistory[]>) => {
-			const originals = state.history.map((item) => item._id);
-			const updates = action.payload.filter((item) => !originals.includes(item._id));
+		addHistory: (state, action: PayloadAction<SavingsHistoryPayload>) => {
+			const savingsHistory = Object.keys(state.history).find(
+				(item) => item === action.payload.savingsId
+			);
+
+			if (savingsHistory?.length) {
+				const originals = state.history[action.payload.savingsId].map((item) => item._id);
+
+				const updates = action.payload.data.filter((item) => !originals.includes(item._id));
+				return {
+					...state,
+					history: {
+						...state.history,
+						[action.payload.savingsId]: [...updates, ...state.history[action.payload.savingsId]],
+					},
+				};
+			}
 
 			return {
 				...state,
-				history: [...updates, ...state.history],
+				history: {
+					...state.history,
+					[action.payload.savingsId]: action.payload.data,
+				},
 			};
 		},
 		setSavingsDetails: (state, action: PayloadAction<Savings>) => {
@@ -77,9 +99,10 @@ const savingsSlice = createSlice({
 				}
 			}
 		},
+		resetSavingsState : ()=> initialState
 	},
 });
 
-export const { addSavings, addHistory, setSavingsDetails, updateSavingsDetails, dissolveSavings } =
+export const { addSavings, addHistory, setSavingsDetails, updateSavingsDetails, dissolveSavings, resetSavingsState } =
 	savingsSlice.actions;
 export default savingsSlice.reducer;

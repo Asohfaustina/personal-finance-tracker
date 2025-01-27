@@ -1,4 +1,4 @@
-import getBudget from "@/services/expenses/get-budget";
+import getBudget from "@/services/budget/get-budget";
 import useActions from "@/store/actions";
 import { useAppSelector } from "@/store/hooks";
 import { useQuery } from "react-query";
@@ -22,7 +22,7 @@ export default function useBudget() {
 
 	const response = useQuery(["budget", userId], () => getBudget({ userId }), {
 		onSuccess(data) {
-			expense.updateBudget(data);
+			if (data.docs[0]) expense.setBudget(data.docs[0]);
 		},
 	});
 
@@ -32,7 +32,7 @@ export default function useBudget() {
 		const duration = new Date(budget.duration).getTime();
 
 		if (date > duration) {
-			expense.updateBudget(null);
+			expense.setBudget(null);
 		}
 	}, [budget]);
 

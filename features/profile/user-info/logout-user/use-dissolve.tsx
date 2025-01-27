@@ -8,7 +8,7 @@ import { User } from "@/types/user";
 
 export default function useLogout(close: Function, open: boolean) {
 	const [isLoading, setIsLoading] = React.useState(false);
-	const { ui, root, account } = useActions();
+	const { ui, root, account, resetStates } = useActions();
 
 	const scaleAnimValue = React.useRef(new Animated.Value(0.9)).current;
 	const fadeAnimValue = React.useRef(new Animated.Value(0)).current;
@@ -37,6 +37,7 @@ export default function useLogout(close: Function, open: boolean) {
 			expiresAt: 0,
 		});
 		root.changeIsLoggedIn(false);
+		resetStates();
 	};
 	const handleClose = () => {
 		if (isLoading) return;

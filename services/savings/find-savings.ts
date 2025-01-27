@@ -4,7 +4,7 @@ import { savings } from "@/constants/data/savings";
 import { Savings } from "@/types/savings";
 
 export async function production(id: string): Promise<Savings> {
-	const response = await axios.get(`/savings/${id}`);
+	const response = await axios.get(`/v1/savings/${id}`);
 	return response.data;
 }
 
@@ -20,6 +20,6 @@ export async function development(id: string): Promise<Savings> {
 }
 
 export default async function findSavings(id: string): Promise<Savings> {
-	if (variables.NODE_ENV === "production") return production(id);
+	if (variables.SERVICE_ENV === "production") return production(id);
 	return development(id);
 }

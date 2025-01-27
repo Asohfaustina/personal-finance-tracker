@@ -35,8 +35,8 @@ export default function useForm() {
 			account.changeAccountState({
 				user: response.user,
 				refreshToken: response.refresh,
-				authToken: response.key,
-				expiresAt: response.exp,
+				authToken: response.token,
+				expiresAt: 0,
 			});
 
 			root.changeIsLoggedIn(true);
@@ -48,6 +48,7 @@ export default function useForm() {
 			router.push(`/(root)/(main)/(tabs)/(home)`);
 		} catch (error) {
 			const errMsg = ensureError(error).message;
+			console.log("errMsg", ensureError(error));
 			ui.toggleToast({
 				msgs: errMsg,
 				show: true,
