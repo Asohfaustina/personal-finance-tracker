@@ -4,9 +4,9 @@ import spinner from "@/assets/images/spinner.png";
 import logo from "@/assets/images/logo.png"
 
 // onboarding 
-import onboarding_01 from "@/assets/images/onboarding-01.png"
-import onboarding_02 from "@/assets/images/onboarding-02.png";
-import onboarding_03 from "@/assets/images/onboarding-03.png";
+import onboarding_01 from "@/assets/images/onboarding-01.jpg"
+import onboarding_02 from "@/assets/images/onboarding-02.jpg";
+import onboarding_03 from "@/assets/images/onboarding-03.jpg";
 import onboarding_04 from "@/assets/images/onboarding-04.png";
 
 /** utilities */
