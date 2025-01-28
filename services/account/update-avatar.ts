@@ -20,7 +20,7 @@ type Response = {
 };
 
 export async function production({ userId, ...data }: UpdateAvatarParams): Promise<Response> {
-	const response = await axios.patch(`/users/${userId}/avatar/`, data);
+	const response = await axios.patch(`/v1/users/${userId}/avatar/`, data);
 	return response.data;
 }
 

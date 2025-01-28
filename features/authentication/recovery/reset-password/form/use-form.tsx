@@ -39,9 +39,11 @@ export default function useForm() {
 			});
 		}
 		setIsLoading(true);
+		
 		try {
 			const formValues = validate.parse(formData);
-			await recoverPassword({ email, otp, ...formValues });
+
+			await recoverPassword({ newPassword: formValues.newPassword, email, otp });
 			ui.toggleToast({
 				msgs: "Password Reset successfully",
 				show: true,

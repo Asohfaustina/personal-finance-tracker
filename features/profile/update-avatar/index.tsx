@@ -8,7 +8,7 @@ import * as React from "react";
 export default function () {
 	const { user, isLoading, setCurrent, updateAvatar } = useUpdateAvatar();
 	const avatar = React.useMemo(() => {
-		return user.avatar ? String(user.avatar) : null;
+		return user.avatar ? String(user.avatar.url) : null;
 	}, [user.avatar]);
 
 	const isVerified = React.useMemo(() => {

@@ -1,5 +1,5 @@
 import {  variables } from "@/constants";
-import { type User } from "@/types/user";
+
 
 import axios from "@/lib/axios";
 import { Uploads } from "@/types/uploads";
@@ -14,7 +14,7 @@ type UpdateAvatarParams = {
 
 type Response = Uploads
 export async function production({ userId, ...data }: UpdateAvatarParams): Promise<Response> {
-	const response = await axios.post(`/users/${userId}/avatar/`, data);
+	const response = await axios.post(`/v1/users/${userId}/avatar/`, data);
 	return response.data;
 }
 

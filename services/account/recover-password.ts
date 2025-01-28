@@ -7,8 +7,9 @@ type Payload = {
 	otp: string;
 };
 
-export async function production({ email, otp, ...payload }: Payload): Promise<void> {
-	const response = await axios.post(`/v1/auth/recover`, payload);
+export async function production(payload: Payload): Promise<void> {
+	console.log("payload", payload);
+	const response = await axios.patch(`/v1/auth/recover`, payload);
 	return response.data;
 }
 

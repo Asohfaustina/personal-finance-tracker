@@ -8,8 +8,9 @@ export default function ensureError(err: unknown): Error {
     return newError;
   }
   if (err instanceof AxiosError) {
+    console.log(err.request)
     if (err.response) {
-      const newError = new Error(err.response.data.msg);
+      const newError = new Error(err.response.data.msg?? err.response.data);
       return newError;
     }
   }
